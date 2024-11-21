@@ -56,10 +56,10 @@ jobs:
     needs: update-app-version
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@main
+      - uses: actions/checkout@master
 
       - name: Merge live-release -> main
-        uses: devmasx/merge-branch@main
+        uses: devmasx/merge-branch@master
         with:
           type: now
           message: New app version created '${{ github.sha }}'
@@ -71,9 +71,9 @@ jobs:
     needs: deploy-to-live
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@main
+      - uses: actions/checkout@master
 
-      - name: Merge test-release -> test
+      - name: Merge live-release -> main
         uses: devmasx/merge-branch@main
         with:
           type: now
