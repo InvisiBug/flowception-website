@@ -21,7 +21,7 @@ const LandingPage: FC<any> = ({ dbItems }) => {
           unoptimized
         />
         <h1>
-          In the meantime, please check out our <Link href="https://twitter.com/chibicode">linktree</Link>
+          In the meantime, please check out our <Link href="https://linktree.flowception.co.uk">linktree</Link>
         </h1>
         {/* <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <title>Linktree</title>
