@@ -2,7 +2,7 @@ name: flowception-website
 
 namespace: flowception
 env:
-  APP_VERSION: 8f6f18edc29f0375be0797405c22bfff1a6e2e37
+  APP_VERSION: 42062550536ed3b3ae6a45f5a7f2708954c69ef6
 
 deployment:
   - name: flowception-website
