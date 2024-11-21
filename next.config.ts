@@ -6,7 +6,16 @@ const nextConfig: NextConfig = {
   compiler: {
     styledComponents: true,
   },
-
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "i.giphy.com",
+        pathname: "/media/**",
+        port: "",
+      },
+    ],
+  },
 
   // !! WARN !!
   // Dangerously allow production builds to successfully complete even if
@@ -16,4 +25,3 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
-

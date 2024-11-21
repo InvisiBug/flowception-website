@@ -36,7 +36,7 @@ export const GlobalSytles = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     box-sizing: border-box;
-    color: white;
+    /* color: white; */
     font-family: "Nunito", sans-serif;
     user-select: none;
     /* overflow: none; */
