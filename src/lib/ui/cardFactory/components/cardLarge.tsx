@@ -1,16 +1,14 @@
-import React, { FC, Fragment, useState, useEffect } from "react";
-import styled from "@emotion/styled";
+import React, { FC, Fragment } from "react";
+import styled from "styled-components";
 import Link from "next/link";
-import { Tag } from "src/lib/components";
+import { Tag } from "@/lib/ui";
 import { PageMetaData } from "src/lib/types";
 import { cardBackground, devBackground } from "src/lib/colours";
 
 //* Live pages are allways shown
 //* Dev pages are only shown when running locally
-const CardClean: FC<Props> = ({ pageData, folder }) => {
-  const { title, subTitle, thumbnail, slug, status, categories } = pageData;
-
-  const [isShown, setIsShown] = useState(false);
+const CardLarge: FC<Props> = ({ pageData, folder }) => {
+  const { title, subTitle, thumbnail, slug, status, tags } = pageData;
 
   if (status === "Hidden") {
     return null;
@@ -23,37 +21,34 @@ const CardClean: FC<Props> = ({ pageData, folder }) => {
   }
 
   return (
-    <OuterContainer>
+    <>
       <Link href={`${folder}/[slug]`} as={`${folder}/${slug}`}>
-        <Container onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)}>
+        <Container>
           {thumbnail && <Thumnail src={thumbnail} alt={"Add alt"} />}
-          {isShown && (
-            <Content>
-              <Title>{title}</Title>
-              <Subtitle>{subTitle}</Subtitle>
-
-              <BottomRow>
-                <Tags>
-                  {categories?.map((category) => {
-                    return (
-                      <Fragment key={category}>
-                        <Tag>{category}</Tag>
-                      </Fragment>
-                    );
-                  })}
-                </Tags>
-
-                {status === "Dev" ? <Dev>Work In Progres</Dev> : null}
-              </BottomRow>
-            </Content>
-          )}
+          <Content>
+            <Title>{title}</Title>
+            <Subtitle>{subTitle}</Subtitle>
+            <BottomRow>
+              <Open>Open</Open>
+              <Tags>
+                {tags?.map((tag) => {
+                  return (
+                    <Fragment key={tag}>
+                      <Tag>{tag}</Tag>
+                    </Fragment>
+                  );
+                })}
+              </Tags>
+              {status === "Dev" ? <Dev>Work In Progres</Dev> : null}
+            </BottomRow>
+          </Content>
         </Container>
       </Link>
-    </OuterContainer>
+    </>
   );
 };
 
-export default CardClean;
+export default CardLarge;
 
 interface Props {
   pageData: PageMetaData;
@@ -62,14 +57,10 @@ interface Props {
 
 const borders = false;
 
-const OuterContainer = styled.div`
-  border: ${borders ? "2px solid red" : "none"};
-`;
-
 const Container = styled.div`
   border: ${borders ? "2px solid black" : "none"};
-  width: 15rem;
-  /* height: 15rem; */
+  width: 45rem;
+  height: 10rem;
   border-radius: 15px;
   margin-top: 1rem;
   color: white;
@@ -80,13 +71,12 @@ const Container = styled.div`
   margin-left: 0.5rem;
   margin-right: 0.5rem;
 
-  /* display: flex; */
-  /* flex-direction: column; */
-
-  display: grid;
-
+  display: flex;
+  flex-direction: row;
   overflow: hidden;
-  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  box-shadow:
+    0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
 
   /* From https://css.glass */
   /* background: rgba(255, 255, 255, 0.08);
@@ -98,42 +88,19 @@ const Container = styled.div`
 `;
 
 const Thumnail = styled.img`
-  width: 100%;
+  min-width: 30%;
+  max-width: 30%;
+  /* height: 5rem; */
   border: ${borders ? "1px solid white" : "none"};
 
   overflow: hidden;
-  object-fit: scale-down;
-  grid-area: 1/1;
+  object-fit: cover;
 `;
 
 // Content
 const Content = styled.div`
-  background: linear-gradient(0deg, #0000003c 10%, #2b2c2bc9 100%);
-  z-index: 10;
-  grid-area: 1/1;
-
-  animation: slide-in 500ms;
-
-  @keyframes slide-in {
-    from {
-      transform: translatey(+100%);
-    }
-    to {
-      transform: translatey(0%);
-    }
-  }
-
-  /* width: 100%; */
-
-  /* top: 0;
-  left: 0;
-  width: 15rem;
-height: 15rem; */
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-
   border: ${borders ? "1px solid orange" : "none"};
-  /* padding: 0 1rem 0 1rem; */
+  padding: 0 1rem 0 1rem;
   display: flex;
   flex-direction: column;
   flex-grow: 1;

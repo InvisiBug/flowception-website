@@ -1,9 +1,9 @@
-"use client"
+"use client";
 import React, { FC } from "react";
-import styled from "@emotion/styled";
+import styled from "styled-components";
 import { mq, px } from "src/lib/mediaQueries";
 import { capitalizeFirstLetter, getPageMetaData } from "src/lib/helpers";
-import { NotionResponse } from "src/lib/types";
+
 import { CardGenerator } from "./cardFactory";
 
 const Showcase: FC<Props> = ({ thingsToShowcase }) => {
@@ -26,7 +26,7 @@ const Showcase: FC<Props> = ({ thingsToShowcase }) => {
 export default Showcase;
 
 interface Props {
-  thingsToShowcase: NotionResponse[];
+  thingsToShowcase: any[];
 }
 
 const borders = false;
@@ -69,5 +69,9 @@ const CardHolder = styled.div`
 
 const Title = styled.h1`
   color: white;
-  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+  text-shadow:
+    1px 0 0 #000,
+    0 -1px 0 #000,
+    0 1px 0 #000,
+    -1px 0 0 #000;
 `;

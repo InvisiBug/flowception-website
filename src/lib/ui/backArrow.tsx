@@ -1,6 +1,6 @@
-"use client"
+"use client";
 import React, { FC } from "react";
-import styled from "@emotion/styled";
+import styled from "styled-components";
 import { useRouter } from "next/navigation";
 
 const BackArrow: FC = () => {

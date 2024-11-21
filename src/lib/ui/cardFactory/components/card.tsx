@@ -1,8 +1,8 @@
 import React, { FC, Fragment } from "react";
-import styled from "@emotion/styled";
+import styled from "styled-components";
 import Link from "next/link";
-import { Tag } from "src/lib/components";
-import { PageMetaData } from "src/lib/types";
+import { Tag } from "@/lib/ui";
+import { PageMetaData } from "@/lib/types";
 import { cardBackground, devBackground } from "src/lib/colours";
 
 //* Live pages are allways shown
@@ -76,7 +76,9 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  box-shadow:
+    0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
 
   /* From https://css.glass */
   /* background: rgba(255, 255, 255, 0.08);

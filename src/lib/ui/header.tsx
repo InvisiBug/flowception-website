@@ -1,15 +1,18 @@
-"use client"
+"use client";
 import React, { FC } from "react";
-import styled from "@emotion/styled";
+import styled from "styled-components";
 import { mq, px } from "src/lib/mediaQueries";
 import { background } from "src/lib/colours";
 import Link from "next/link";
 import { links } from "src/lib/constants";
 
+//  TODO: Make hamburger menu for mobile
+// * Use this site to make compound component
+
 const Header: FC<Props> = ({ background = true }) => {
   return (
     <>
-      <Container showBackground={background}>
+      <Container $showBackground={background}>
         <NavBar>
           <Link href={"/"} as={"/"}>
             <Title>
@@ -17,23 +20,17 @@ const Header: FC<Props> = ({ background = true }) => {
             </Title>
           </Link>
 
-          {/* <Links>
+          <Links>
             {links.map((link, index) => {
               return (
-                <Link href={link.toLocaleLowerCase()} as={`/${link.toLocaleLowerCase()}`} key={index}>
+                <Link href={link.url} as={`/${link.url}`} key={index}>
                   <LinkItem>
-                    <div>{link}</div>
+                    <NavLink>{link.text}</NavLink>
                   </LinkItem>
                 </Link>
               );
             })}
-            <Github href="https://github.com/InvisiBug" target="_blank">
-              <Image src={"https://icon-library.com/images/github-icon-white/github-icon-white-6.jpg"} />
-            </Github>
-            <Insta href="https://www.instagram.com/invisibug/" target="_blank">
-              <Image src={"https://www.edigitalagency.com.au/wp-content/uploads/new-Instagram-logo-white-glyph.png"} />
-            </Insta>
-          </Links> */}
+          </Links>
         </NavBar>
       </Container>
     </>
@@ -46,7 +43,7 @@ type Props = {
   background?: boolean;
 };
 
-const borders = false;
+const borders = true;
 
 const Container = styled.div<NavbarProps>`
   border: ${borders ? "1px solid orange" : "none"};
@@ -57,19 +54,19 @@ const Container = styled.div<NavbarProps>`
 
   /* background: ${background}; */
 
-  background: ${({ showBackground }) => (showBackground ? background : null)};
+  background: ${({ $showBackground }) => ($showBackground ? background : null)};
   display: flex;
   color: white;
 
   justify-content: center;
-  border-bottom: ${({ showBackground }) => (showBackground ? "1px solid rgba(255, 255, 255, 0.1)" : null)};
+  border-bottom: ${({ $showBackground }) => ($showBackground ? "1px solid rgba(255, 255, 255, 0.1)" : null)};
 
   height: 5rem;
   z-index: 10;
 `;
 
 type NavbarProps = {
-  showBackground: boolean;
+  $showBackground: boolean;
 };
 
 const NavBar = styled.div`
@@ -87,22 +84,35 @@ const NavBar = styled.div`
   }
 `;
 
-const Links = styled.div`
+const Links = styled.ul`
   border: ${borders ? "1px solid white" : "none"};
   height: 100%;
   display: flex;
   align-items: center;
 `;
 
-const LinkItem = styled.div`
+const LinkItem = styled.li`
   border: ${borders ? "1px solid purple" : "none"};
-  min-width: 100px;
-  margin-right: 2rem;
+  /* min-width: 100px; */
+  /* margin-right: 2rem; */
+
+  list-style: none;
 
   font-weight: bold;
   text-align: center;
   font-size: large;
   cursor: pointer;
+  :hover {
+    border-bottom: 1px solid white;
+  }
+  :active {
+    color: grey;
+  }
+`;
+
+const NavLink = styled.div`
+  display: block;
+  margin: 0 0.5rem;
 `;
 
 const Github = styled.a`

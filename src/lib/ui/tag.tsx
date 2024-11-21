@@ -1,6 +1,6 @@
-"use client"
+"use client";
 import React, { FC } from "react";
-import styled from "@emotion/styled";
+import styled from "styled-components";
 import { borders } from "src/lib/colours";
 //? Turned off by display none at the bottom
 

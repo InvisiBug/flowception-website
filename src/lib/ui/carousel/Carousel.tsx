@@ -1,21 +1,24 @@
-"use client"
+"use client";
 
-import React, { FC, useState, useEffect,useCallback } from "react";
-import styled from "@emotion/styled";
+import React, { FC, useState, useEffect, useCallback } from "react";
+import styled from "styled-components";
 
 export const Carousel: FC<Props> = ({ children, height, includeControls = true, pausable = true, slideTimer = 2000 }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [paused, setPaused] = useState(false);
 
-  const updateIndex = useCallback((newIndex: number): void => {
-    if (newIndex < 0) {
-      newIndex = React.Children.count(children) - 1;
-    } else if (newIndex >= React.Children.count(children)) {
-      newIndex = 0;
-    }
+  const updateIndex = useCallback(
+    (newIndex: number): void => {
+      if (newIndex < 0) {
+        newIndex = React.Children.count(children) - 1;
+      } else if (newIndex >= React.Children.count(children)) {
+        newIndex = 0;
+      }
 
-    setActiveIndex(newIndex);
-  }, [children]);
+      setActiveIndex(newIndex);
+    },
+    [children],
+  );
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -27,12 +30,11 @@ export const Carousel: FC<Props> = ({ children, height, includeControls = true, 
     return () => {
       clearInterval(interval);
     };
-  }, [,pausable, slideTimer, updateIndex,paused, activeIndex]);
+  }, [, pausable, slideTimer, updateIndex, paused, activeIndex]);
 
   return (
     <Container onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
       <Inner style={{ transform: `translateX(-${activeIndex * 100}%)`, height: height }}>
-
         {React.Children.map(children, (child, index) => {
           return React.cloneElement(child, { width: "100vw" });
         })}

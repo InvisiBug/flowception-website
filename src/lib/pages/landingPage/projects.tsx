@@ -1,7 +1,7 @@
 import React, { FC } from "react";
-import styled from "@emotion/styled";
+import styled from "styled-components";
 import { getPageMetaData } from "src/lib/helpers";
-import { CardGenerator } from "../../components/cardFactory";
+import { CardGenerator } from "../../ui/cardFactory";
 
 const Projects: FC<Props> = ({ dbItems }) => {
   return (
