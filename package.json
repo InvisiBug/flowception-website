@@ -6,7 +6,9 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "up": "docker compose up -d --build",
+    "down": "docker compose down"
   },
   "dependencies": {
     "@emotion/css": "^11.13.4",
