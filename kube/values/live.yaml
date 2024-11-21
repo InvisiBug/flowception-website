@@ -1,0 +1,23 @@
+name: flowception-website
+
+namespace: flowception
+env:
+  APP_VERSION: 6ea17811c84874c9f97d921e1a571722c3291190
+
+deployment:
+  - name: flowception-website
+    image: invisibug/flowception-website
+
+service:
+  loadBalancer:
+    - name: flowception-website
+      selector: flowception-website
+      port: 80
+      containerPort: 3000
+
+ingress:
+  - name: flowception.co.uk
+    selector: flowception-website
+    path: /
+    port: 3000
+    host: flowception.co.uk
