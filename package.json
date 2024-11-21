@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "up": "docker compose up -d --build",
-    "down": "docker compose down"
+    "down": "docker compose down",
+    "deploy": "git checkout live-release && git merge dev && git push && git checkout dev"
   },
   "dependencies": {
     "@emotion/css": "^11.13.4",
