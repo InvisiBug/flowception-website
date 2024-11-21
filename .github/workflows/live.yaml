@@ -74,7 +74,7 @@ jobs:
       - uses: actions/checkout@master
 
       - name: Merge live-release -> main
-        uses: devmasx/merge-branch@main
+        uses: devmasx/merge-branch@master
         with:
           type: now
           from_branch: main
