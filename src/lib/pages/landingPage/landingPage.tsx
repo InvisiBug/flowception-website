@@ -13,7 +13,7 @@ const LandingPage: FC<any> = ({ dbItems }) => {
     <>
       <Header background={true} />
 
-      <Carousel includeControls={false} pausable={true} height={"100vh"} slideTimer={5000}>
+      <Carousel includeControls={false} pausable={false} height={"100vh"} slideTimer={5000}>
         <Item width={"100vw"}>
           <ImageContainer>
             <Image
@@ -55,7 +55,7 @@ const LandingPage: FC<any> = ({ dbItems }) => {
               style={{
                 width: "100%",
                 height: "auto",
-                marginTop: "-200px",
+                marginTop: "-100px",
               }}
               width="100"
               height="100"
@@ -74,7 +74,7 @@ export default LandingPage;
 const borders = false;
 
 export const ImageContainer = styled.div`
-  border: 1px solid red;
+  border: ${borders ? "1px solid red" : "none"};
   display: flex;
   justify-content: center;
   align-items: center;

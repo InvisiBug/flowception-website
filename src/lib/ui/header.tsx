@@ -43,7 +43,7 @@ type Props = {
   background?: boolean;
 };
 
-const borders = true;
+const borders = false;
 
 const Container = styled.div<NavbarProps>`
   border: ${borders ? "1px solid orange" : "none"};
