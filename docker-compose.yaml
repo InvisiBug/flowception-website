@@ -21,6 +21,7 @@ services:
     image: wordpress:latest
     volumes:
       - wp_data:/var/www/html
+      - ./config/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
     ports:
       - 80:80
     restart: always
